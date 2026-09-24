@@ -16,9 +16,9 @@ struct Boid {
     }
 }
 
-struct ValueLimits<Value: Comparable & Sendable> : Sendable{
-     let defaultValue: Value
-     let range: ClosedRange<Value>
+public struct ValueLimits<Value: Comparable & Sendable> : Sendable{
+     public let defaultValue: Value
+     public let range: ClosedRange<Value>
 
      init(
         defaultValue: Value,
@@ -38,54 +38,54 @@ struct ValueLimits<Value: Comparable & Sendable> : Sendable{
     }
 }
 
-enum SimulationDataStructure: String, CaseIterable {
+public enum SimulationDataStructure: String, CaseIterable {
     case naive = "Naive"
     case quadTree = "Quad Tree"
     case spatialHash = "Spatial Hash"
 }
 
-enum BoidConstants {
-    static let boidCount = ValueLimits(
+public enum BoidConstants {
+    public static let boidCount = ValueLimits(
         defaultValue: CGFloat(100),
         range: CGFloat(0)...CGFloat(400)
     )
 
-    static let maxSpeed = ValueLimits(
+    public static let maxSpeed = ValueLimits(
         defaultValue: CGFloat(3.0),
         range: CGFloat(1.0)...CGFloat(8.0)
     )
 
-    static let maxForce = ValueLimits(
+    public static let maxForce = ValueLimits(
         defaultValue: CGFloat(0.05),
         range: CGFloat(0.03)...CGFloat(0.1)
     )
 
-    static let visibilityRange = ValueLimits(
+    public static let visibilityRange = ValueLimits(
         defaultValue: CGFloat(25.0),
         range: CGFloat(10.0)...CGFloat(100.0)
     )
 
-    static let seekRadius = ValueLimits(
+    public static let seekRadius = ValueLimits(
         defaultValue: CGFloat(200.0),
         range: CGFloat(10.0)...CGFloat(1000.0)
     )
 
-    static let separationWeight = ValueLimits(
+    public static let separationWeight = ValueLimits(
         defaultValue: CGFloat(1.5),
         range: CGFloat(0.0)...CGFloat(2.0)
     )
 
-    static let alignmentWeight = ValueLimits(
+    public static let alignmentWeight = ValueLimits(
         defaultValue: CGFloat(1.0),
         range: CGFloat(0.0)...CGFloat(2.0)
     )
 
-    static let cohesionWeight = ValueLimits(
+    public static let cohesionWeight = ValueLimits(
         defaultValue: CGFloat(1.0),
         range: CGFloat(0.0)...CGFloat(2.0)
     )
 
-    static let seekWeight = ValueLimits(
+    public static let seekWeight = ValueLimits(
         defaultValue: CGFloat(10.0),
         range: CGFloat(0.0)...CGFloat(10.0)
     )
@@ -105,7 +105,7 @@ enum BoidConstants {
      var seekWeight: CGFloat
      var searchMethod: SimulationDataStructure
 
-     init(
+     public init(
         boidCount: CGFloat = BoidConstants.boidCount.defaultValue,
         maxSpeed: CGFloat = BoidConstants.maxSpeed.defaultValue,
         steeringForce: CGFloat = BoidConstants.maxForce.defaultValue,
